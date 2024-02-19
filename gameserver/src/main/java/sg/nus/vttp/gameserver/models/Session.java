@@ -11,11 +11,19 @@ public class Session {
     private String id;
     private int players;
     private List<Player> playersList = new ArrayList<>();
+    private boolean gameStarted = false;
 
     
+    public boolean isGameStarted() {
+        return gameStarted;
+    }
+    public void setGameStarted(boolean gameStarted) {
+        this.gameStarted = gameStarted;
+    }
     public Session(String id, int players) {
         this.id = id;
         this.players = players;
+        this.gameStarted = false;
     }
     public String getId() {
         return id;
@@ -38,9 +46,9 @@ public class Session {
     public String toJsonObjectToString(){
         JsonObjectBuilder JOB = Json.createObjectBuilder();
         JOB.add("id",getId())
-            .add("players",getPlayers());
+            .add("players",getPlayers())
+            .add("gameStarted",isGameStarted());
         return JOB.build().toString();
-
     }
 
     
