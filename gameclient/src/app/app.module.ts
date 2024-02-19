@@ -8,6 +8,7 @@ import { GameplayerComponent } from './gameplayer/gameplayer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes =[
@@ -28,7 +29,8 @@ const appRoutes: Routes =[
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

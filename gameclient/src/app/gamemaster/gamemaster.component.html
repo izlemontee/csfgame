@@ -1,4 +1,16 @@
-<div *ngIf="inWaitingRoom">
+<h2>Game Master</h2>
+<div *ngIf="inWaitingRoom || gameStarted else initialise">
     <p>In waiting room</p>
 </div>
-<button (click)="initialiseSession()">Initialise New Game</button>
+<div *ngIf="sessionId">
+    <p>Your session ID: {{sessionId}}</p>
+    <p>Players in room: {{players}}</p>
+    <div *ngIf="!gameStarted">
+        <button (click)="startGame()">Start Game</button>
+    </div>
+</div>
+
+<ng-template #initialise>
+    <button (click)="initialiseSession()">Initialise New Game</button>
+</ng-template>
+

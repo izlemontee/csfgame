@@ -15,6 +15,7 @@ export class GamemasterComponent implements OnInit{
   inWaitingRoom: boolean = false
   sessionId!: string
   players : number =0
+  gameStarted: boolean = false
 
   sub !: Subscription
 
@@ -52,15 +53,19 @@ export class GamemasterComponent implements OnInit{
         startWith(0),
         switchMap(()=>this.gameServer.masterWaitingRoom(this.sessionId))
       ).subscribe(
-        res => {console.log("waiting room id: ",res.id), 
-          console.log("waiting room players: ",res.players)},
+        res => {
+          console.log("waiting room id: ",res.id), 
+          console.log("waiting room players: ",res.players)
+          this.players = res.players},
         err=>console.log("error")
       )
   }
 
   startGame(){
     this.inWaitingRoom = false
+    this.gameStarted = true
     this.sub.unsubscribe()
+    this.gameServer.startGame(this.sessionId)
     console.log("start")
   }
 

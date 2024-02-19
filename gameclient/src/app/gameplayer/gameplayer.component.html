@@ -1,1 +1,14 @@
-<p>gameplayer works!</p>
+<h2>Player</h2>
+<div *ngIf="roomid">
+    <p>Your room ID is: {{roomid}}</p>
+    <div *ngIf="!gamestarted">
+        <p>You are in the waiting room. Waiting for other players...</p>
+    </div>
+</div>
+<div *ngIf="findingNewRoom">
+    <form [formGroup]="roomCodeForm">
+        <p>Enter room ID: </p>
+        <input type="text" formControlName="roomid">
+        <button type="button" (click)="submitRoomId()">Enter Room</button>
+    </form>
+</div>

@@ -13,4 +13,8 @@ export class MainComponent {
     this.router.navigate(["/master"])
   }
 
+  gamePlayer(){
+    this.router.navigate(["/player"])
+  }
+
 }
